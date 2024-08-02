@@ -48,7 +48,7 @@ cacheSolve <- function(X, ...) {
 [1,]   -2  1.5
 [2,]    1 -0.5
 
-## if the same input is passed again, we would get the "getting cached data" message:
+## If the same input is passed again, we would get the "getting cached data" message:
 > cacheSolve(X)
 getting cached data
      [,1] [,2]
