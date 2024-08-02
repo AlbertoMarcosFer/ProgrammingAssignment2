@@ -2,13 +2,13 @@
 
 ## The following function (makeCacheMatrix) requires a single argument: a matrix x.
 ## makeCacheMatrix clears the memory of the console by setting m to NULL both in the 
-## makeCacheMatrix Environment (m <- NULL) and in the Global Environment  (m <<- NULL).
-## Four which will be used in CacheSolve are created (set, get, setInverse and getInverse).
+## makeCacheMatrix Environment (m <- NULL) and in the Global Environment (m <<- NULL).
+## Four functions (set(), get(), setInverse() and getInverse()) that will be used in the
+## CacheSolve function are created .
 
 makeCacheMatrix <- function(x = matrix()) {
         m <- NULL
         set <- function(y) {
-                x <<- y
                 m <<- NULL
         }
         get <- function() x
@@ -39,3 +39,20 @@ cacheSolve <- function(X, ...) {
         m
         ## Return a matrix that is the inverse of 'x'
 }
+
+
+## An example of the way it works would be:
+> X <- makeCacheMatrix(x= matrix(c(1, 2, 3, 4), nrow=2, ncol=2))
+> cacheSolve(X)
+     [,1] [,2]
+[1,]   -2  1.5
+[2,]    1 -0.5
+
+## if the same input is passed again, we would get the "getting cached data" message:
+> cacheSolve(X)
+getting cached data
+     [,1] [,2]
+[1,]   -2  1.5
+[2,]    1 -0.5
+
+## Thank you for your time :)
